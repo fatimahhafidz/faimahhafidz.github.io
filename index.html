@@ -13,6 +13,8 @@
 
     <!-- my css -->
     <link rel="stylesheet" href="style.css" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
 
   <body id="home">
@@ -52,7 +54,7 @@
     <!-- Jumbotron -->
     <section class="jumbotron text-center">
       <img src="image/foto-sertifikat1.png" alt="Fatimah Hafidz" width="200" class="rounded img-thumbnail" />
-      <h1 class="display-4">Fatimah Hafidz</h1>
+      <h1 class="display-4">Fatimah Hafidz ST.</h1>
       <p class="lead">Manual Software Quality Assurance Tester</p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
@@ -147,17 +149,32 @@
         <div class="row justify-content-center">
           <div class="col-md-4 mb-3">
             <div class="card">
-              <img src="image/projects/2.jpg" class="card-img-top" alt="project 2" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <img src="image/Sertifikat/ijazah-s1.jpg" class="card-img-top" alt="project 2" />
+              <div class="card-body text-center">
+                <p class="card-text">
+                  Ijazah S1 Teknik Informatika <br />
+                  Universitas Pasundan Bandung
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <div class="card">
-              <img src="image/projects/3.jpg" class="card-img-top" alt="project 3" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <img src="image/Sertifikat/ijazah-s1-inggris.jpg" class="card-img-top" alt="project 3" />
+              <div class="card-body text-center">
+                <p class="card-text">
+                  Ijazah S1 Teknik Informatika <br />
+                  Universitas Pasundan Bandung <br />
+                  -English Version-
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img src="image/Sertifikat/css bootstrap - CODEPOLITAN.jpg" class="card-img-top" alt="project 3" />
+              <div class="card-body text-center">
+                <p class="card-text">Bootstap Certificate</p>
               </div>
             </div>
           </div>
@@ -228,24 +245,30 @@
           </div>
         </div>
         <div class="row justify-content-evenly align-items-center">
-          <div class="col-md-8 border p-3">
-            <form>
-              <div class="mb-3">
-                <b>Silahkan menghubungi saya dengan mengisi kolom berikut :</b>
-              </div>
+          <div class="col-md-8 border m-3 p-5 shadow-lg">
+            <form name="contact-form-portofolio-eva">
+              <p class="fw-bold text-success">Silahkan Menghubungi Saya <br /></p>
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" />
+                <input type="text" class="form-control form-control-sm" id="name" aria-describedby="name" name="nama" />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" />
+                <input type="email" class="form-control form-control-sm" id="email" aria-describedby="email" name="email" />
+              </div>
+              <div class="mb-3">
+                <label for="notelp" class="form-label">Nomor Handphone</label>
+                <input type="text" class="form-control form-control-sm" id="notelp" aria-describedby="notelp" name="notelp" />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
+                <textarea class="form-control form-control-sm" id="pesan" rows="3" name="pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Kirim</button>
+              <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span role="status">Loading...</span>
+              </button>
             </form>
           </div>
           <div class="col-md-8 align-items-center text-center p-4">
@@ -274,5 +297,40 @@
     <!-- Akhir Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbw_wARV0jou11-ocsVthCYytmJpDr08unQJKrSctOJPwhGHbCXejcS62KQiROJa57tsWA/exec";
+      const form = document.forms["contact-form-portofolio-eva"];
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        //ketika tombol submit di klik
+        //tampilkan tombol loading hilangkan tombol kirim
+        btnLoading.classList.toggle("d-none");
+        btnKirim.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            //tampilkan tombol kirim hilangkan tombol loading
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
+
+            //tampilkan alert
+            swal({
+              title: "Terimakasih!",
+              text: "Pesan berhasil terkirim",
+              icon: "success",
+              button: true,
+            });
+
+            //reset form
+            form.reset();
+
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
