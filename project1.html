@@ -141,13 +141,36 @@
             </p>
           </div>
 
-          <div class="col-md-10 p-5 rounded border">
+          <div class="col-md-10 p-5 rounded border mb-3">
             <p>
               <b class="fs-5">CONCLUSIONS</b> <br />
               <br />
-              Beberapa fitur pada situs web GrowiaShop masih berada pada level citical dan important yang dapat mempengaruhi fungsi dari situs tersebut <br /><br />
+              Dari 60 test case yang telah di identifikasi, 38 case dinyatakan berhasil dan 22 case gagal. <br />
+              <br />
+              Telah ditemukan 22 defect pada situs GrowiaShop, dimana terdapat sekitar 30% defect yang memiliki priority dan saverity yang tinggi <br />
+              <br />
+              Beberapa fitur pada situs web GrowiaShop masih berada pada level citical dan important yang dapat mempengaruhi fungsi dari situs tersebut
+            </p>
+          </div>
 
-              Situs web GrowiaShop belum dapat dirilis karena masih banyak perbaikan yang harus dilakukan, terutama pada fitur-fitur yang critical dan high resiko.
+          <div class="col-md-10 p-5 rounded border mb-3">
+            <p>
+              <b class="fs-5">Challenges & Solution</b> <br />
+              <br />
+              Challenges : <br />
+              <br />
+              1. Salah satu tantangan yang signifikan adalah pada kerentanan input data pada formulir login. <br />
+              2. Masalah lain adalah terkait dengan keranjang belanja, terutama mengenai penambahan dan pengurangan item <br />
+              3. masalah berikutnya adalah pada proses checkout dengan sistem pembayaran yang masih gagal. <br />
+              <br />
+
+              Solution : <br />
+              <br />
+
+              1. Untuk menguji pada kerentanan input data adalah dengan memasukkan input data yang tidak valid <br />
+              2. untuk mengatasi permasalah kernajang belanja dilakukan uji skenario batas, seperti Penambahan item melebihi stok yang tersedia dan pengurangan item kurang dari 1 item <br />
+              3. untuk pengujian pada proses checkout dilakukan dengan membuat skenario pengujian manual yang mencakup: Pengisian data pengguna (alamat pengiriman, metode pengiriman). Pilihan metode pembayaran (cod dan kartu kredit).
+              Simulasi pengguna yang membatalkan atau mengubah metode pembayaran.
             </p>
           </div>
         </div>
